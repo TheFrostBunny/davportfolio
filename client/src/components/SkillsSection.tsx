@@ -46,7 +46,7 @@ const skills: Skill[] = [
   { name: 'Database Design', level: 88, category: 'Backend' },
   { name: 'REST APIs', level: 90, category: 'Backend' },
 
-  // DevOps & Tools
+  // DevOps
   { name: 'Docker', level: 82, category: 'DevOps' },
   { name: 'Linux', level: 88, category: 'DevOps' },
   { name: 'Git', level: 90, category: 'DevOps' },
