@@ -49,6 +49,9 @@ const skills: Skill[] = [
   // Backend
   { name: 'Node.js', level: 90, category: 'Backend' },
   { name: 'Python', level: 92, category: 'Backend' },
+  { name: 'MySQL', level: 85, category: 'Backend' },
+  { name: 'PostgreSQL', level: 80, category: 'Backend' },
+  { name: "C#", level: 60, category: 'Backend' },
   { name: 'Database Design', level: 88, category: 'Backend' },
   { name: 'REST APIs', level: 90, category: 'Backend' },
 
@@ -56,16 +59,9 @@ const skills: Skill[] = [
   { name: 'Docker', level: 82, category: 'DevOps' },
   { name: 'Linux', level: 88, category: 'DevOps' },
   { name: 'Git', level: 90, category: 'DevOps' },
-  { name: 'CI/CD', level: 80, category: 'DevOps' },
-
-  // Emerging Tech
-  { name: 'AI/ML', level: 80, category: 'Emerging' },
-  { name: 'Game Dev', level: 78, category: 'Emerging' },
-  { name: 'IoT', level: 75, category: 'Emerging' },
-  { name: 'Web3', level: 70, category: 'Emerging' },
 ];
 
-const categories = ['Frontend', 'Backend', 'DevOps', 'Emerging'];
+const categories = ['Frontend', 'Backend', 'DevOps'];
 
 export default function SkillsGalaxy() {
   const { language } = useLanguage();
