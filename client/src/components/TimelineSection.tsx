@@ -39,11 +39,6 @@ const translations = {
         description: 'Continued second year of secondary school in Information Technology with focus on deeper technical skills.',
       },
       {
-        year: '2026',
-        title: 'Backend Learning',
-        description: 'Learned Node.js, databases and backend architecture for full-stack development.',
-      },
-      {
         year: '2026-2028',
         title: 'Apprenticeship at Norseye',
         description: 'Learning and practical experience at Norseye from summer 2026 to 2028.',
