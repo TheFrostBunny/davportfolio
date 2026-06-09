@@ -27,11 +27,14 @@ const translations = {
 
 interface Project {
   id: string;
-  name: string;
-  description: string;
+  nameNo: string;
+  nameEn: string;
+  descriptionNo: string;
+  descriptionEn: string;
   status: 'Active' | 'Completed' | 'Experimental' | 'Archived';
   technologies: string[];
-  keyLearning: string;
+  keyLearningNo: string;
+  keyLearningEn: string;
   innovationScore: number;
   github?: string;
   url?: string;
@@ -40,84 +43,55 @@ interface Project {
 const projects: Project[] = [
   {
     id: '1',
-    name: 'Sikkerhetslab',
-    description: 'Security research laboratory for vulnerability testing and exploitation',
+    nameNo: 'Sikkerhetslab',
+    nameEn: 'Security Lab',
+    descriptionNo: 'Interaktiv webapp for praktisk læring i cybersikkerhet gjennom moduler, simuleringer og CTF-lignende utfordringer.',
+    descriptionEn: 'Interactive web app for practical cybersecurity learning through modules, simulations, and CTF-like challenges.',
     status: 'Active',
-    technologies: ['Python', 'Bash', 'Docker', 'Penetration Testing'],
-    keyLearning: 'Advanced network security and ethical hacking techniques',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Cybersikkerhet'],
+    keyLearningNo: 'Praktisk trening i digitalt forsvar, etisk hacking og trygg problemloesning.',
+    keyLearningEn: 'Practical training in digital defense, ethical hacking, and secure problem solving.',
     innovationScore: 9,
+    github: 'https://github.com/TheFrostBunny/SikkerhetsLab',
   },
   {
     id: '2',
-    name: 'HTML4Hacker',
-    description: 'Educational platform teaching HTML and web security fundamentals',
-    status: 'Completed',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Web Security'],
-    keyLearning: 'Effective technical education and community engagement',
-    innovationScore: 7,
-  },
-  {
-    id: '3',
-    name: 'Elemental-Realms',
-    description: 'Fantasy RPG game engine with dynamic element system',
+    nameNo: 'Elemental-Realms',
+    nameEn: 'Elemental-Realms',
+    descriptionNo: 'Fantasy RPG-spillmotor med dynamisk elementsystem',
+    descriptionEn: 'Fantasy RPG game engine with dynamic element system',
     status: 'Active',
-    technologies: ['Unity', 'C#', 'Game Design', 'Physics'],
-    keyLearning: 'Complex game mechanics and player engagement systems',
+    technologies: ['TypeScript', 'React','Rust', 'Game Design', 'Physics'],
+    keyLearningNo: 'Kompleks spillmekanikk og systemer for spillerengasjement',
+    keyLearningEn: 'Complex game mechanics and player engagement systems',
     innovationScore: 8,
-  },
-  {
-    id: '4',
-    name: 'KySI',
-    description: 'Advanced AI chatbot with natural language processing',
-    status: 'Experimental',
-    technologies: ['Python', 'TensorFlow', 'NLP', 'FastAPI'],
-    keyLearning: 'Machine learning model optimization and deployment',
-    innovationScore: 9,
+    github: 'https://github.com/TheFrostBunny/Elemental-Realms',
   },
   {
     id: '5',
-    name: 'Raspberry Pi-Audio',
-    description: 'IoT audio streaming system for distributed sound systems',
+    nameNo: 'Raspberry Pi-Arduino',
+    nameEn: 'Raspberry Pi-Arduino',
+    descriptionNo: 'Dette prosjektet gir deg et komplett oppsett for Raspberry Pi med Arduino, Python-backend og moderne React-frontend. Alt installeres og startes automatisk med ett skript.',
+    descriptionEn: 'This project gives you a complete Raspberry Pi setup with Arduino, a Python backend, and a modern React frontend. Everything is installed and started automatically with one script.',
     status: 'Completed',
-    technologies: ['Raspberry Pi', 'Python', 'Audio Processing', 'Network'],
-    keyLearning: 'Embedded systems and real-time audio processing',
+    technologies: ['Raspberry Pi', 'Arduino', 'Python', 'Audio Processing', 'Network'],
+    keyLearningNo: 'Innebygde systemer og sanntids lydbehandling',
+    keyLearningEn: 'Embedded systems and real-time audio processing',
     innovationScore: 8,
-  },
-  {
-    id: '6',
-    name: 'VERT',
-    description: 'Vertical scrolling shooter game with advanced graphics',
-    status: 'Active',
-    technologies: ['Godot', 'GDScript', 'Game Physics', 'Graphics'],
-    keyLearning: 'Real-time graphics rendering and game optimization',
-    innovationScore: 7,
-  },
-  {
-    id: '7',
-    name: 'Caus-2026',
-    description: 'Causality analysis framework for complex system modeling',
-    status: 'Experimental',
-    technologies: ['Python', 'Data Science', 'Statistics', 'Visualization'],
-    keyLearning: 'Advanced statistical analysis and causal inference',
-    innovationScore: 9,
+    github: 'https://github.com/TheFrostBunny/Raspberry-Pi-Arduino',
   },
   {
     id: '9',
-    name: 'Ninja-Streamingserver',
-    description: 'High-performance streaming server for live content delivery',
+    nameNo: 'Nginx-Streamingserver',
+    nameEn: 'Nginx Streaming Server',
+    descriptionNo: 'Nginx Streamingserver Dashboard er en sanntids overvakingsapp som automatisk viser streamene som sendes til serveren.',
+    descriptionEn: 'The Nginx Streamingserver Dashboard is a real-time monitoring application that automatically displays streams being transmitted to the server.',
     status: 'Active',
     technologies: ['Node.js', 'WebRTC', 'FFmpeg', 'Streaming Protocols'],
-    keyLearning: 'Real-time streaming architecture and optimization',
+    keyLearningNo: 'Arkitektur og optimalisering for sanntidsstreaming',
+    keyLearningEn: 'Real-time streaming architecture and optimization',
     innovationScore: 8,
-  },
-  {
-    id: '11',
-    name: 'Inspira-Studio',
-    description: 'Creative design studio platform with collaborative tools',
-    status: 'Active',
-    technologies: ['React', 'Canvas API', 'WebSockets', 'Collaboration'],
-    keyLearning: 'Real-time collaborative editing and design systems',
-    innovationScore: 8,
+    github: 'https://github.com/TheFrostBunny/Nginx-Streamingserver',
   },
 ];
 
@@ -182,11 +156,11 @@ export default function ExperimentArchive() {
                 </div>
 
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                  {project.name}
+                  {language === 'no' ? project.nameNo : project.nameEn}
                 </h3>
                 
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed font-light">
-                  {project.description}
+                  {language === 'no' ? project.descriptionNo : project.descriptionEn}
                 </p>
 
                 {/* Technologies */}
@@ -231,7 +205,9 @@ export default function ExperimentArchive() {
                       <ExternalLink size={14} />
                     </motion.button>
                     <motion.a
-                      href="#"
+                      href={project.github ?? '#'}
+                      target="_blank"
+                      rel="noreferrer"
                       whileHover={{ x: 3 }}
                       className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
                     >

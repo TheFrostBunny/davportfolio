@@ -3,20 +3,21 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const translations = {
   no: {
-    tagline: 'Kreativ Utvikler & Forsker',
+    tagline: 'Kreativ Utvikler',
     home: 'Hjem',
     projects: 'Prosjekter',
     contact: 'Kontakt',
     copyright: 'Laget med Presisjon & Passion',
   },
   en: {
-    tagline: 'Creative Developer & Researcher',
+    tagline: 'Creative Developer',
     home: 'Home',
     projects: 'Projects',
     contact: 'Contact',
     copyright: 'Crafted with Precision & Passion',
   },
 };
+
 
 
 export default function Footer() {
@@ -31,7 +32,7 @@ export default function Footer() {
           {/* Branding */}
           <div className="text-center md:text-left">
             <div className="text-xl font-bold tracking-tighter text-white mb-3">
-              <span className="text-blue-500">TFB</span>.LAB
+              <span className="text-blue-500">David </span> Portfolio 
             </div>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-[0.2em]">
               {t.tagline}
