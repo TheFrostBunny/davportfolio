@@ -93,6 +93,19 @@ const projects: Project[] = [
     innovationScore: 8,
     github: 'https://github.com/TheFrostBunny/Nginx-Streamingserver',
   },
+  {
+    id: '10',
+    nameNo: "Kyststi",
+    nameEn: "Kyststi",
+    descriptionNo: "KystSti er en interaktiv app for kyst- og byvandringer i Kristiansund, Norge. Brukere kan følge kuraterte turer med stopp, skanne QR-koder, høre lydguider og se ruter på kart.",
+    descriptionEn: "KystSti is an interactive coastal and city walking app for Kristiansund, Norway. Users can follow curated tours with stops, scan QR codes, listen to audio guides, and view routes on a map.",
+    status: 'Completed',
+    technologies: ['React', 'Mapbox', 'Geospatial Data', 'Outdoor Recreation'],
+    keyLearningNo: 'Bygget funksjoner for QR-opplasing, lydguider, fremdriftssporing, TourBuilder og flerspraklig stotte (norsk/engelsk).',
+    keyLearningEn: 'Built features for QR unlock flows, audio guides, progress tracking, TourBuilder, and bilingual support (Norwegian/English).',
+    innovationScore: 7,
+    github: 'https://github.com/TheFrostBunny/KystSti',
+  }
 ];
 
 const statusColors = {
