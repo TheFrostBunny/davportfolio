@@ -60,7 +60,7 @@ const projects: Project[] = [
     nameEn: 'Elemental-Realms',
     descriptionNo: 'Fantasy RPG-spillmotor med dynamisk elementsystem',
     descriptionEn: 'Fantasy RPG game engine with dynamic element system',
-    status: 'Active',
+    status: 'Completed',
     technologies: ['TypeScript', 'React','Rust', 'Game Design', 'Physics'],
     keyLearningNo: 'Kompleks spillmekanikk og systemer for spillerengasjement',
     keyLearningEn: 'Complex game mechanics and player engagement systems',
@@ -86,7 +86,7 @@ const projects: Project[] = [
     nameEn: 'Nginx Streaming Server',
     descriptionNo: 'Nginx Streamingserver Dashboard er en sanntids overvakingsapp som automatisk viser streamene som sendes til serveren.',
     descriptionEn: 'The Nginx Streamingserver Dashboard is a real-time monitoring application that automatically displays streams being transmitted to the server.',
-    status: 'Active',
+    status: 'Completed',
     technologies: ['Node.js', 'WebRTC', 'FFmpeg', 'Streaming Protocols'],
     keyLearningNo: 'Arkitektur og optimalisering for sanntidsstreaming',
     keyLearningEn: 'Real-time streaming architecture and optimization',
@@ -176,7 +176,6 @@ export default function ExperimentArchive() {
                 </div>
 
                 <div className="mt-auto space-y-6">
-                  {/* Innovation Score */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Zap size={14} className="text-amber-400" />
@@ -194,26 +193,33 @@ export default function ExperimentArchive() {
                     </div>
                   </div>
 
-                  {/* Links */}
                   <div className="flex gap-4 pt-6 border-t border-white/5">
-                    <motion.button
-                      onClick={() => navigate(`/project/${project.id}`)}
-                      whileHover={{ x: 3 }}
-                      className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer bg-none border-none p-0"
-                    >
-                      Details
-                      <ExternalLink size={14} />
-                    </motion.button>
-                    <motion.a
-                      href={project.github ?? '#'}
-                      target="_blank"
-                      rel="noreferrer"
-                      whileHover={{ x: 3 }}
-                      className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
-                    >
-                      Source
-                      <Github size={14} />
-                    </motion.a>
+                    {typeof project.url === 'string' ? (
+                      <motion.button
+                        onClick={() => {
+                          if (project.url) {
+                            navigate(project.url);
+                          }
+                        }}
+                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors text-xs font-bold uppercase tracking-widest cursor-pointer bg-none border-none p-0"
+                      >
+                        Details
+                        <ExternalLink size={14} />
+                      </motion.button>
+                    ) : null}
+                    {project.github ? (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
+                      >
+                        Source
+                        <Github size={14} />
+                      </motion.a>
+                    ) : null}
                   </div>
                 </div>
               </GlassCard>
