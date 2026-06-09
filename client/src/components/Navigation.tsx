@@ -60,17 +60,6 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
     >
       <div className="container max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <motion.div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => scrollToSection('#home')}
-          whileHover={{ scale: 1.05 }}
-        >
-          <span className="text-white font-mono text-sm font-bold">
-            <span className="text-blue-500">TFB</span>.LAB
-          </span>
-        </motion.div>
-
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (

@@ -8,19 +8,14 @@ const translations = {
     subtitle: 'Utvikling gjennom læring og erfaring',
     events: [
       {
-        year: '2024',
+        year: '2024-2025',
         title: 'Videregående - Informasjonsteknologi',
         description: 'Startet på videregående i Informasjonsteknologi og medieproduksjon hvor jeg lærte om webdev og bygget første interaktive prosjekter.',
       },
       {
-        year: '2025',
-        title: 'Annet År - Informasjonsteknologi',
-        description: 'Fortsatte på annet året av videregående i Informasjonsteknologi med fokus på dypere tekniske ferdigheter.',
-      },
-      {
-        year: '2026',
-        title: 'Backend Læring',
-        description: 'Lærte Node.js, databases og backend-arkitektur for full-stack utvikling.',
+        year: '2025-2026',
+        title: 'Andre År - Informasjonsteknologi',
+        description: 'Fortsatte på andre året av videregående i Informasjonsteknologi med fokus på dypere tekniske ferdigheter.',
       },
       {
         year: '2026-2028',

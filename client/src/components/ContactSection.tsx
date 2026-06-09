@@ -9,10 +9,8 @@ const translations = {
     contactInfo: 'Kontaktinformasjon',
     socialPresence: 'Sosial Tilstedeværelse',
     location: 'Sted',
-    responseTime: 'Responstid',
     currentFocus: 'Nåværende Fokus',
-    locationValue: 'Oslo, Norge',
-    responseTimeValue: 'Innen 24 timer',
+    locationValue: 'Kristiansund, Norge',
     currentFocusValue: 'Fullstack Utvikling',
   },
   en: {
@@ -21,10 +19,8 @@ const translations = {
     contactInfo: 'Contact Information',
     socialPresence: 'Social Presence',
     location: 'Location',
-    responseTime: 'Response Time',
     currentFocus: 'Current Focus',
-    locationValue: 'Oslo, Norway',
-    responseTimeValue: 'Within 24 hours',
+    locationValue: 'Kristiansund, Norway',
     currentFocusValue: 'Fullstack Development',
   },
 };
@@ -35,9 +31,7 @@ export default function ContactSection() {
 
   const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/TheFrostBunny' },
-    { name: 'LinkedIn', icon: Linkedin, url: '#' },
-    { name: 'Twitter', icon: Twitter, url: '#' },
-    { name: 'Email', icon: Mail, url: 'mailto:hello@example.com' },
+    { name: 'Email', icon: Mail, url: 'mailto:david.aa.leren@gmail.com' },
   ];
 
   return (
@@ -78,15 +72,6 @@ export default function ContactSection() {
                 <div>
                   <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.location}</p>
                   <p className="text-white font-light">{t.locationValue}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-5">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400">
-                  <Clock size={20} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{t.responseTime}</p>
-                  <p className="text-white font-light">{t.responseTimeValue}</p>
                 </div>
               </div>
               <div className="flex items-center gap-5">

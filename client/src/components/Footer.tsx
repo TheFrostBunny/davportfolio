@@ -18,14 +18,6 @@ const translations = {
   },
 };
 
-/**
- * Footer Component - Profile Edition
- * 
- * Design:
- * - Minimalist footer
- * - Clean typography
- * - Subtle branding
- */
 
 export default function Footer() {
   const { language } = useLanguage();

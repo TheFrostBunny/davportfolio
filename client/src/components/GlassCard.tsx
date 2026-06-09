@@ -8,14 +8,6 @@ interface GlassCardProps {
   delay?: number;
 }
 
-/**
- * Clean Card Component
- * 
- * Minimalist design:
- * - Simple border and background
- * - Subtle hover effects
- * - No glassmorphism
- */
 export default function GlassCard({
   children,
   className = '',
