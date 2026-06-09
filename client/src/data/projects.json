@@ -10,7 +10,8 @@
 		"keyLearningNo": "Praktisk trening i digitalt forsvar, etisk hacking og trygg problemloesning.",
 		"keyLearningEn": "Practical training in digital defense, ethical hacking, and secure problem solving.",
 		"innovationScore": 9,
-		"github": "https://github.com/TheFrostBunny/SikkerhetsLab"
+		"github": "https://github.com/TheFrostBunny/SikkerhetsLab",
+        "demo": "https://sikkerhetslab.netlify.app/"
 	},
 	{
 		"id": "2",

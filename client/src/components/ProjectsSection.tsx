@@ -28,6 +28,7 @@ interface Project {
   keyLearningEn: string;
   innovationScore: number;
   github?: string;
+  demo?: string;
   url?: string;
 }
 
@@ -140,6 +141,18 @@ export default function ExperimentArchive() {
                         Details
                         <ExternalLink size={14} />
                       </motion.button>
+                    ) : null}
+                    {project.demo ? (
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors text-xs font-bold uppercase tracking-widest"
+                      >
+                        Demo
+                        <ExternalLink size={14} />
+                      </motion.a>
                     ) : null}
                     {project.github ? (
                       <motion.a
