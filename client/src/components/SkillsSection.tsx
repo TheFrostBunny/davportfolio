@@ -24,15 +24,6 @@ const translations = {
   },
 };
 
-/**
- * Skills Component - Profile Edition
- * 
- * Design:
- * - Minimalist skill bars
- * - Grouped by category
- * - Clean typography
- */
-
 interface Skill {
   name: string;
   level: number;
@@ -70,7 +61,6 @@ export default function SkillsGalaxy() {
   return (
     <section className="relative py-32 bg-background">
       <div className="container max-w-5xl mx-auto px-6">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +77,6 @@ export default function SkillsGalaxy() {
           </p>
         </motion.div>
 
-        {/* Skills by category */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
           {categories.map((category, categoryIndex) => {
             const categorySkills = skills.filter(s => s.category === category);
