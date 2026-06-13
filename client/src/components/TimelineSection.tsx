@@ -73,10 +73,12 @@ export default function TimelineSection() {
           </p>
         </motion.div>
 
-        {/* Timeline with central line */}
+        {/* Timeline with vertical line */}
         <div className="relative">
-          {/* Central vertical line - hidden on mobile */}
-          <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500" />
+          {/* Vertical line - left on mobile, center on desktop */}
+          <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500" 
+               style={{ left: 'calc(1.25rem - 2px)', right: 'auto' }}
+               className="sm:left-auto sm:right-auto sm:left-1/2 sm:-translate-x-1/2" />
 
           {/* Timeline events */}
           <div className="space-y-12 sm:space-y-16 md:space-y-20">
@@ -91,9 +93,9 @@ export default function TimelineSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`relative flex sm:${isEven ? 'flex-row' : 'flex-row-reverse'} flex-col items-start sm:items-center gap-4 sm:gap-8 md:gap-12`}
+                  className={`relative flex flex-col sm:${isEven ? 'flex-row' : 'flex-row-reverse'} items-start sm:items-center gap-4 sm:gap-8 md:gap-12`}
                 >
-                  {/* Timeline node - left on mobile, centered on desktop */}
+                  {/* Timeline node - left on mobile, alternates on desktop */}
                   <div className="flex-shrink-0 relative z-10">
                     <motion.div
                       className="w-10 h-10 sm:w-12 sm:h-12 bg-background border-2 border-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50"
@@ -103,7 +105,7 @@ export default function TimelineSection() {
                     </motion.div>
                   </div>
 
-                  {/* Content card */}
+                  {/* Content card - always to the right on mobile */}
                   <div className="flex-1 pl-4 sm:pl-0">
                     <motion.div
                       whileHover={{ y: -4 }}
