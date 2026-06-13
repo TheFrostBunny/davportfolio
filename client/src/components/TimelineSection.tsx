@@ -77,7 +77,9 @@ export default function TimelineSection() {
         <div className="relative">
           {/* Vertical line - left on mobile, center on desktop */}
           <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500" 
-               style={{ left: 'calc(1.25rem - 2px)', right: 'auto' }}
+               style={{ 
+                 left: 'calc(1.25rem - 2px)',
+               }}
                className="sm:left-auto sm:right-auto sm:left-1/2 sm:-translate-x-1/2" />
 
           {/* Timeline events */}
@@ -93,38 +95,69 @@ export default function TimelineSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`relative flex flex-col sm:${isEven ? 'flex-row' : 'flex-row-reverse'} items-start sm:items-center gap-4 sm:gap-8 md:gap-12`}
+                  className="relative"
                 >
-                  {/* Timeline node - left on mobile, alternates on desktop */}
-                  <div className="flex-shrink-0 relative z-10">
-                    <motion.div
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-background border-2 border-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50"
-                      whileHover={{ scale: 1.2 }}
-                    >
-                      <Icon className="text-blue-500" size={18} />
-                    </motion.div>
+                  {/* Mobile layout: icon left, content right */}
+                  <div className="sm:hidden flex items-start gap-4">
+                    <div className="flex-shrink-0 relative z-10">
+                      <motion.div
+                        className="w-10 h-10 bg-background border-2 border-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50"
+                        whileHover={{ scale: 1.2 }}
+                      >
+                        <Icon className="text-blue-500" size={18} />
+                      </motion.div>
+                    </div>
+                    <div className="flex-1 pt-1">
+                      <motion.div
+                        whileHover={{ y: -4 }}
+                        className="bg-card border border-white/5 hover:border-blue-500/30 rounded-lg p-4 transition-all duration-500"
+                      >
+                        <div className="text-blue-500 font-mono text-xs font-bold mb-2">
+                          {event.year}
+                        </div>
+                        <h3 className="text-white font-bold text-base mb-2">
+                          {event.title}
+                        </h3>
+                        <p className="text-gray-400 text-xs leading-relaxed">
+                          {event.description}
+                        </p>
+                      </motion.div>
+                    </div>
                   </div>
 
-                  {/* Content card - always to the right on mobile */}
-                  <div className="flex-1 pl-4 sm:pl-0">
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      className="bg-card border border-white/5 hover:border-blue-500/30 rounded-lg p-4 sm:p-6 md:p-8 transition-all duration-500"
-                    >
-                      <div className="text-blue-500 font-mono text-xs sm:text-sm font-bold mb-2">
-                        {event.year}
-                      </div>
-                      <h3 className="text-white font-bold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">
-                        {event.title}
-                      </h3>
-                      <p className="text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed">
-                        {event.description}
-                      </p>
-                    </motion.div>
-                  </div>
+                  {/* Desktop layout: alternating left/right */}
+                  <div className={`hidden sm:flex items-center gap-8 md:gap-12 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
+                    {/* Left/Right content card */}
+                    <div className="flex-1">
+                      <motion.div
+                        whileHover={{ y: -4 }}
+                        className="bg-card border border-white/5 hover:border-blue-500/30 rounded-lg p-6 md:p-8 transition-all duration-500"
+                      >
+                        <div className="text-blue-500 font-mono text-sm font-bold mb-2">
+                          {event.year}
+                        </div>
+                        <h3 className="text-white font-bold text-lg md:text-xl mb-3">
+                          {event.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                          {event.description}
+                        </p>
+                      </motion.div>
+                    </div>
 
-                  {/* Spacer for right side alignment - hidden on mobile */}
-                  <div className="hidden sm:block flex-1" />
+                    {/* Center node */}
+                    <div className="flex-shrink-0 relative z-10">
+                      <motion.div
+                        className="w-12 h-12 bg-background border-2 border-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50"
+                        whileHover={{ scale: 1.2 }}
+                      >
+                        <Icon className="text-blue-500" size={20} />
+                      </motion.div>
+                    </div>
+
+                    {/* Right/Left spacer */}
+                    <div className="flex-1" />
+                  </div>
                 </motion.div>
               );
             })}
