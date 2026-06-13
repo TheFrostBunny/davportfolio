@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Menu, X } from 'lucide-react';
+import { useIsMobile } from '@/hooks/useMobile';
 
 const translations = {
   no: {
@@ -21,7 +23,9 @@ const translations = {
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +49,7 @@ export default function Navigation() {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setMobileMenuOpen(false);
     }
   };
 
@@ -59,7 +64,7 @@ export default function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
@@ -73,6 +78,17 @@ export default function Navigation() {
             </motion.button>
           ))}
         </div>
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden inline-flex items-center justify-center rounded-md p-1.5 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.96 }}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </motion.button>
 
         {/* Language Toggle */}
         <motion.button
@@ -108,6 +124,29 @@ export default function Navigation() {
           )}
         </motion.button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/5"
+        >
+          <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-3">
+            {navItems.map((item) => (
+              <motion.button
+                key={item.href}
+                onClick={() => scrollToSection(item.href)}
+                className="text-sm uppercase tracking-widest text-gray-400 hover:text-white transition-colors font-medium py-2 text-left"
+                whileHover={{ x: 4 }}
+              >
+                {item.label}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 }

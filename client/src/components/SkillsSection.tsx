@@ -59,25 +59,25 @@ export default function SkillsGalaxy() {
   const t = translations[language];
 
   return (
-    <section className="relative py-32 bg-background">
-      <div className="container max-w-5xl mx-auto px-6">
+    <section className="relative py-20 sm:py-32 bg-background">
+      <div className="container max-w-5xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-16 sm:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
             {t.title}
           </h2>
           <div className="w-20 h-1 bg-blue-600 rounded-full mb-6"></div>
-          <p className="text-gray-400 text-lg max-w-2xl font-light">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl font-light">
             {t.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-16 gap-y-12 sm:gap-y-16">
           {categories.map((category, categoryIndex) => {
             const categorySkills = skills.filter(s => s.category === category);
             return (
@@ -88,13 +88,13 @@ export default function SkillsGalaxy() {
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-xs font-bold text-blue-500 uppercase tracking-[0.2em] mb-10">{t.categories[category as keyof typeof t.categories] || category}</h3>
-                <div className="space-y-8">
+                <h3 className="text-xs font-bold text-blue-500 uppercase tracking-[0.2em] mb-6 sm:mb-10">{t.categories[category as keyof typeof t.categories] || category}</h3>
+                <div className="space-y-6 sm:space-y-8">
                   {categorySkills.map((skill, index) => (
                     <div key={skill.name} className="group">
-                      <div className="flex items-center justify-between mb-3">
-                        <h4 className="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">{skill.name}</h4>
-                        <span className="text-[10px] font-mono text-gray-500">{skill.level}%</span>
+                      <div className="flex items-center justify-between mb-2 sm:mb-3">
+                        <h4 className="text-xs sm:text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">{skill.name}</h4>
+                        <span className="text-[9px] sm:text-[10px] font-mono text-gray-500 ml-2 flex-shrink-0">{skill.level}%</span>
                       </div>
                       <div className="w-full bg-white/5 rounded-full h-[2px] overflow-hidden">
                         <motion.div

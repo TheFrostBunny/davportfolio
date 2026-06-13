@@ -60,9 +60,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
       <motion.div
-        className="relative z-10 container max-w-5xl mx-auto px-6"
+        className="relative z-10 container max-w-5xl mx-auto px-4 sm:px-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -74,7 +74,7 @@ export default function HeroSection() {
 
         {/* Main headline */}
         <motion.div variants={itemVariants} className="mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-white">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-white">
             {displayText}
             <motion.span
               animate={{ opacity: [1, 0] }}
@@ -88,7 +88,7 @@ export default function HeroSection() {
 
         {/* Subheadline */}
         <motion.div variants={itemVariants} className="mb-12 max-w-3xl">
-          <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-relaxed font-light">
             {t.subtitle}
           </p>
         </motion.div>
@@ -96,13 +96,13 @@ export default function HeroSection() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap gap-5 mb-20"
+          className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 mb-20"
         >
           <motion.button
             whileHover={{ scale: 1.02, backgroundColor: '#3b82f6' }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-4 bg-blue-600 text-white font-semibold rounded-full
-              transition-all duration-300 shadow-lg shadow-blue-500/20"
+            className="px-6 sm:px-10 py-3 sm:py-4 bg-blue-600 text-white font-semibold rounded-full text-sm sm:text-base
+              transition-all duration-300 shadow-lg shadow-blue-500/20 w-full sm:w-auto"
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
           >
             {t.cta1}
@@ -111,8 +111,8 @@ export default function HeroSection() {
           <motion.button
             whileHover={{ scale: 1.02, borderColor: '#60a5fa', backgroundColor: 'rgba(255,255,255,0.05)' }}
             whileTap={{ scale: 0.98 }}
-            className="px-10 py-4 border border-gray-700 text-white font-semibold rounded-full
-              transition-all duration-300"
+            className="px-6 sm:px-10 py-3 sm:py-4 border border-gray-700 text-white font-semibold rounded-full text-sm sm:text-base
+              transition-all duration-300 w-full sm:w-auto"
             onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
           >
             {t.cta2}
@@ -122,7 +122,7 @@ export default function HeroSection() {
         {/* Scroll indicator */}
         <motion.div
           variants={itemVariants}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-gray-500"
+          className="hidden sm:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-gray-500"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
