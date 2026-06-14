@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Menu, X } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useIsMobile } from '@/hooks/useMobile';
 
 const translations = {
@@ -25,6 +26,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const { theme, toggleTheme, switchable } = useTheme();
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -89,6 +91,20 @@ export default function Navigation() {
         >
           {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.button>
+
+        {/* Theme Toggle */}
+        {switchable && (
+          <motion.button
+            onClick={toggleTheme}
+            className="inline-flex items-center justify-center rounded-md p-1.5 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-400/40 transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.96 }}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </motion.button>
+        )}
 
         {/* Language Toggle */}
         <motion.button
