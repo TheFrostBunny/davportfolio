@@ -63,6 +63,7 @@
 		"keyLearningNo": "Bygget funksjoner for QR-opplasing, lydguider, fremdriftssporing, TourBuilder og flerspraklig stotte (norsk/engelsk).",
 		"keyLearningEn": "Built features for QR unlock flows, audio guides, progress tracking, TourBuilder, and bilingual support (Norwegian/English).",
 		"innovationScore": 7,
-		"github": "https://github.com/TheFrostBunny/KystSti"
+		"github": "https://github.com/TheFrostBunny/KystSti",
+		"demo": "https://kyststi.netlify.app/"
 	}
 ]
