@@ -68,11 +68,11 @@ export default function SkillsGalaxy() {
           viewport={{ once: true }}
           className="mb-16 sm:mb-24"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-foreground">
             {t.title}
           </h2>
           <div className="w-20 h-1 bg-blue-600 rounded-full mb-6"></div>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl font-light">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">
             {t.subtitle}
           </p>
         </motion.div>
@@ -93,10 +93,10 @@ export default function SkillsGalaxy() {
                   {categorySkills.map((skill, index) => (
                     <div key={skill.name} className="group">
                       <div className="flex items-center justify-between mb-2 sm:mb-3">
-                        <h4 className="text-xs sm:text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">{skill.name}</h4>
-                        <span className="text-[9px] sm:text-[10px] font-mono text-gray-500 ml-2 flex-shrink-0">{skill.level}%</span>
+                        <h4 className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-blue-400 transition-colors">{skill.name}</h4>
+                        <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground ml-2 flex-shrink-0">{skill.level}%</span>
                       </div>
-                      <div className="w-full bg-white/5 rounded-full h-[2px] overflow-hidden">
+                      <div className="w-full bg-white/5 dark:bg-white/5 light:bg-black/5 rounded-full h-[2px] overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}

@@ -74,7 +74,7 @@ export default function HeroSection() {
 
         {/* Main headline */}
         <motion.div variants={itemVariants} className="mb-8">
-          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-white">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight text-foreground">
             {displayText}
             <motion.span
               animate={{ opacity: [1, 0] }}
@@ -88,7 +88,7 @@ export default function HeroSection() {
 
         {/* Subheadline */}
         <motion.div variants={itemVariants} className="mb-12 max-w-3xl">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light">
             {t.subtitle}
           </p>
         </motion.div>
@@ -109,9 +109,9 @@ export default function HeroSection() {
           </motion.button>
 
           <motion.button
-            whileHover={{ scale: 1.02, borderColor: '#60a5fa', backgroundColor: 'rgba(255,255,255,0.05)' }}
+            whileHover={{ scale: 1.02, borderColor: '#60a5fa', backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
             whileTap={{ scale: 0.98 }}
-            className="px-6 sm:px-10 py-3 sm:py-4 border border-gray-700 text-white font-semibold rounded-full text-sm sm:text-base
+            className="px-6 sm:px-10 py-3 sm:py-4 border border-border text-foreground font-semibold rounded-full text-sm sm:text-base
               transition-all duration-300 w-full sm:w-auto"
             onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
           >
@@ -122,7 +122,7 @@ export default function HeroSection() {
         {/* Scroll indicator */}
         <motion.div
           variants={itemVariants}
-          className="hidden sm:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-gray-500"
+          className="hidden sm:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 text-muted-foreground"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >

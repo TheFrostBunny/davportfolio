@@ -47,7 +47,7 @@ export default function ExperimentArchive() {
   const t = translations[language];
 
   return (
-    <section className="relative py-20 sm:py-32">
+    <section className="relative py-20 sm:py-32 bg-background">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,11 +56,11 @@ export default function ExperimentArchive() {
           viewport={{ once: true }}
           className="mb-16 sm:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-foreground">
             {t.title}
           </h2>
           <div className="w-20 h-1 bg-blue-600 rounded-full mb-6"></div>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl font-light">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl font-light">
             {t.subtitle}
           </p>
         </motion.div>
@@ -91,11 +91,11 @@ export default function ExperimentArchive() {
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
                   {language === 'no' ? project.nameNo : project.nameEn}
                 </h3>
                 
-                <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed font-light line-clamp-3">
+                <p className="text-muted-foreground text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed font-light line-clamp-3">
                   {language === 'no' ? project.descriptionNo : project.descriptionEn}
                 </p>
 
@@ -103,7 +103,7 @@ export default function ExperimentArchive() {
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 border border-white/10 rounded text-gray-400 font-mono whitespace-nowrap"
+                      className="text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white/5 dark:bg-white/5 light:bg-black/5 border border-white/10 dark:border-white/10 light:border-black/10 rounded text-muted-foreground font-mono whitespace-nowrap"
                     >
                       {tech}
                     </span>
@@ -114,7 +114,7 @@ export default function ExperimentArchive() {
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <Zap size={12} className="text-amber-400" />
-                      <span className="text-[8px] sm:text-[10px] text-gray-500 font-bold uppercase tracking-widest">Innovation</span>
+                      <span className="text-[8px] sm:text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Innovation</span>
                     </div>
                     <div className="flex items-center gap-1">
                       {Array.from({ length: 5 }).map((_, i) => (
@@ -137,7 +137,7 @@ export default function ExperimentArchive() {
                           }
                         }}
                         whileHover={{ x: 3 }}
-                        className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-white hover:text-blue-400 transition-colors text-[10px] sm:text-xs font-bold uppercase tracking-widest cursor-pointer bg-none border-none p-0 py-2 sm:py-0"
+                        className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-foreground hover:text-blue-400 transition-colors text-[10px] sm:text-xs font-bold uppercase tracking-widest cursor-pointer bg-none border-none p-0 py-2 sm:py-0"
                       >
                         Details
                         <ExternalLink size={12} />
@@ -149,7 +149,7 @@ export default function ExperimentArchive() {
                         target="_blank"
                         rel="noreferrer"
                         whileHover={{ x: 3 }}
-                        className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-white hover:text-blue-400 transition-colors text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2 sm:py-0"
+                        className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-foreground hover:text-blue-400 transition-colors text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2 sm:py-0"
                       >
                         Demo
                         <ExternalLink size={12} />
@@ -161,7 +161,7 @@ export default function ExperimentArchive() {
                         target="_blank"
                         rel="noreferrer"
                         whileHover={{ x: 3 }}
-                        className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-gray-500 hover:text-white transition-colors text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2 sm:py-0"
+                        className="flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-muted-foreground hover:text-foreground transition-colors text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2 sm:py-0"
                       >
                         Source
                         <Github size={12} />
