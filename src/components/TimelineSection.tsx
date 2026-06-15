@@ -76,11 +76,7 @@ export default function TimelineSection() {
         {/* Timeline with vertical line */}
         <div className="relative">
           {/* Vertical line - left on mobile, center on desktop */}
-          <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500"
-               style={{
-                 left: 'calc(1.25rem - 2px)',
-               }}
-               className="sm:left-auto sm:right-auto sm:left-1/2 sm:-translate-x-1/2" />
+          <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 left-[calc(1.25rem-2px)] sm:left-1/2 sm:-translate-x-1/2" />
 
           {/* Timeline events */}
           <div className="space-y-12 sm:space-y-16 md:space-y-20">
