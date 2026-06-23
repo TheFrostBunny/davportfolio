@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import Skills, { categories } from '../data/Skills';
+import Skills, { categories } from '@/data/Skills';
 
 export default function SkillsGalaxy() {
   const { language } = useLanguage();

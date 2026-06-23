@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Code, Shield, Cpu, Brain, Rocket, Briefcase } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import TimeLine from "../data/Timeline";
+import TimeLine from "@/data/Timeline";
 
 const icons = [Code, Shield, Cpu, Brain, Rocket, Briefcase];
 
