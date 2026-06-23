@@ -1,62 +1,17 @@
 import { motion } from 'framer-motion';
 import { Code, Shield, Cpu, Brain, Rocket, Briefcase } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-
-const translations = {
-  no: {
-    title: 'Min Reise',
-    subtitle: 'Utvikling gjennom læring og erfaring',
-    events: [
-      {
-        year: '2024-2025',
-        title: 'Videregående - Informasjonsteknologi',
-        description: 'Startet på videregående i Informasjonsteknologi og medieproduksjon hvor jeg lærte om webdev og bygget første interaktive prosjekter.',
-      },
-      {
-        year: '2025-2026',
-        title: 'Andre År - Informasjonsteknologi',
-        description: 'Fortsatte på andre året av videregående i Informasjonsteknologi med fokus på dypere tekniske ferdigheter.',
-      },
-      {
-        year: '2026-2028',
-        title: 'Læring hos Norseye',
-        description: 'Læring og praktisk erfaring hos Norseye fra sommeren 2026 til 2028.',
-      },
-    ],
-  },
-  en: {
-    title: 'My Journey',
-    subtitle: 'Development through learning and experience',
-    events: [
-      {
-        year: '2024',
-        title: 'Secondary School - Information Technology',
-        description: 'Started secondary school in Information Technology and Media Production where I learned about web development and built first interactive projects.',
-      },
-      {
-        year: '2025',
-        title: 'Second Year - Information Technology',
-        description: 'Continued second year of secondary school in Information Technology with focus on deeper technical skills.',
-      },
-      {
-        year: '2026-2028',
-        title: 'Apprenticeship at Norseye',
-        description: 'Learning and practical experience at Norseye from summer 2026 to 2028.',
-      },
-    ],
-  },
-};
+import TimeLine from "../data/Timeline";
 
 const icons = [Code, Shield, Cpu, Brain, Rocket, Briefcase];
 
 export default function TimelineSection() {
   const { language } = useLanguage();
-  const t = translations[language];
+  const t = TimeLine[language];
 
   return (
     <section id="journey" className="relative py-20 sm:py-32 bg-background">
       <div className="container max-w-4xl mx-auto px-4 sm:px-6">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,12 +28,9 @@ export default function TimelineSection() {
           </p>
         </motion.div>
 
-        {/* Timeline with vertical line */}
         <div className="relative">
-          {/* Vertical line - left on mobile, center on desktop */}
           <div className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 left-[calc(1.25rem-2px)] sm:left-1/2 sm:-translate-x-1/2" />
 
-          {/* Timeline events */}
           <div className="space-y-12 sm:space-y-16 md:space-y-20">
             {t.events.map((event, index) => {
               const Icon = icons[index];
@@ -93,7 +45,6 @@ export default function TimelineSection() {
                   viewport={{ once: true }}
                   className="relative"
                 >
-                  {/* Mobile layout: icon left, content right */}
                   <div className="sm:hidden flex items-start gap-4">
                     <div className="flex-shrink-0 relative z-10">
                       <motion.div
@@ -121,9 +72,7 @@ export default function TimelineSection() {
                     </div>
                   </div>
 
-                  {/* Desktop layout: alternating left/right */}
                   <div className={`hidden sm:flex items-center gap-8 md:gap-12 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-                    {/* Left/Right content card */}
                     <div className="flex-1">
                       <motion.div
                         whileHover={{ y: -4 }}
@@ -141,7 +90,6 @@ export default function TimelineSection() {
                       </motion.div>
                     </div>
 
-                    {/* Center node */}
                     <div className="flex-shrink-0 relative z-10">
                       <motion.div
                         className="w-12 h-12 bg-background border-2 border-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50"
@@ -151,7 +99,6 @@ export default function TimelineSection() {
                       </motion.div>
                     </div>
 
-                    {/* Right/Left spacer */}
                     <div className="flex-1" />
                   </div>
                 </motion.div>
