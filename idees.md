@@ -1,1 +1,0 @@
- WARN  deprecated recharts@2.15.4: 1.x and 2.x branches are no longer active. Bump to Recharts v3 to receive latest feat
