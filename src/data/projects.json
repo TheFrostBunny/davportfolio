@@ -5,7 +5,7 @@
 		"nameEn": "Security Lab",
 		"descriptionNo": "Interaktiv webapp for praktisk laering i cybersikkerhet gjennom moduler, simuleringer og CTF-lignende utfordringer.",
 		"descriptionEn": "Interactive web app for practical cybersecurity learning through modules, simulations, and CTF-like challenges.",
-		"status": "Active",
+		"status": "Completed",
 		"technologies": ["React", "TypeScript", "Tailwind CSS", "Cybersikkerhet"],
 		"keyLearningNo": "Praktisk trening i digitalt forsvar, etisk hacking og trygg problemloesning.",
 		"keyLearningEn": "Practical training in digital defense, ethical hacking, and secure problem solving.",
@@ -65,5 +65,25 @@
 		"innovationScore": 7,
 		"github": "https://github.com/TheFrostBunny/KystSti",
 		"demo": "https://kyststi.netlify.app/"
-	}
+	},
+	{
+        "id": "11",
+        "nameNo": "TechVerden",
+        "nameEn": "TechVerden",
+        "descriptionNo": "En teknologinettside laget for venner og familie som ønsker å lære mer om teknologi på en enkel måte. TechVerden tilbyr detaljerte steg-for-steg guider som forklarer alt fra grunnleggende databruk og mobilhjelp til Linux, programmering, sikkerhet, nettverk, cloud og moderne teknologi.",
+        "descriptionEn": "A technology website created for friends and family who want to learn more about technology in a simple way. TechVerden provides detailed step-by-step guides explaining everything from basic computer and mobile usage to Linux, programming, security, networking, cloud, and modern technology.",
+        "status": "Active",
+        "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Markdown",
+        "Web Development",
+        "Technical Documentation"
+         ],
+         "keyLearningNo": "Utviklet evnen til å forklare komplekse teknologiske konsepter gjennom detaljerte guider, strukturert innhold og brukervennlig design.",
+         "keyLearningEn": "Developed skills in explaining complex technology concepts through detailed guides, structured content, and user-friendly design.",
+         "innovationScore": 8,
+         "github": "https://github.com/TheFrostBunny/TechVerden"
+}
 ]
