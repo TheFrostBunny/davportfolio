@@ -1,3 +1,4 @@
+import { Suspense, lazy, useEffect } from 'react';
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -5,14 +6,45 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import Navigation from "./components/Navigation";
 import QuantumBackground from "./components/QuantumBackground";
 import HeroSection from "./components/HeroSection";
-import TimelineSection from "./components/TimelineSection";
-import ProjectsSection from "./components/ProjectsSection";
-import SkillsSection from "./components/SkillsSection";
-import ContactSection from "./components/ContactSection";
-import Footer from "./components/Footer";
 import ErrorBoundary from "./components/ErrorBoundary";
 
+// Code splitting: Lazy load sections that are not immediately visible
+const TimelineSection = lazy(() => import('./components/TimelineSection'));
+const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
+const SkillsSection = lazy(() import('./components/SkillsSection'));
+const ContactSection = lazy(() => import('./components/ContactSection'));
+const Footer = lazy(() => import('./components/Footer'));
+
+// Loading fallback component
+function SectionSkeleton() {
+  return (
+    <div className="relative py-20 sm:py-32 bg-background">
+      <div className="container max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="h-12 bg-white/5 rounded animate-pulse mb-6" />
+        <div className="space-y-4">
+          <div className="h-4 bg-white/5 rounded animate-pulse" />
+          <div className="h-4 bg-white/5 rounded animate-pulse w-3/4" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
+  // Register service worker for offline support
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered:', registration);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+  }, []);
+
   return (
     <ErrorBoundary>
       <LanguageProvider>
@@ -27,20 +59,34 @@ function App() {
                 <section id="home">
                   <HeroSection />
                 </section>
-                <section id="timeline">
-                  <TimelineSection />
-                </section>
-                <section id="projects">
-                  <ProjectsSection />
-                </section>
-                <section id="skills">
-                  <SkillsSection />
-                </section>
-                <section id="contact">
-                  <ContactSection />
-                </section>
+                
+                <Suspense fallback={<SectionSkeleton />}>
+                  <section id="timeline">
+                    <TimelineSection />
+                  </section>
+                </Suspense>
 
-                <Footer />
+                <Suspense fallback={<SectionSkeleton />}>
+                  <section id="projects">
+                    <ProjectsSection />
+                  </section>
+                </Suspense>
+
+                <Suspense fallback={<SectionSkeleton />}>
+                  <section id="skills">
+                    <SkillsSection />
+                  </section>
+                </Suspense>
+
+                <Suspense fallback={<SectionSkeleton />}>
+                  <section id="contact">
+                    <ContactSection />
+                  </section>
+                </Suspense>
+
+                <Suspense fallback={null}>
+                  <Footer />
+                </Suspense>
               </div>
             </div>
           </TooltipProvider>
