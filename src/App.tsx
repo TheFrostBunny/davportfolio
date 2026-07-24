@@ -11,7 +11,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 // Code splitting: Lazy load sections that are not immediately visible
 const TimelineSection = lazy(() => import('./components/TimelineSection'));
 const ProjectsSection = lazy(() => import('./components/ProjectsSection'));
-const SkillsSection = lazy(() import('./components/SkillsSection'));
+const SkillsSection = lazy(() => import('./components/SkillsSection'));
 const ContactSection = lazy(() => import('./components/ContactSection'));
 const Footer = lazy(() => import('./components/Footer'));
 
