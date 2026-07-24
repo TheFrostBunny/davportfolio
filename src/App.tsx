@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import QuantumBackground from "./components/QuantumBackground";
 import HeroSection from "./components/HeroSection";
 import ErrorBoundary from "./components/ErrorBoundary";
+import SectionErrorBoundary from "./components/SectionErrorBoundary";
 
 // Code splitting: Lazy load sections that are not immediately visible
 const TimelineSection = lazy(() => import('./components/TimelineSection'));
@@ -60,29 +61,37 @@ function App() {
                   <HeroSection />
                 </section>
                 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <section id="timeline">
-                    <TimelineSection />
-                  </section>
-                </Suspense>
+                <SectionErrorBoundary sectionName="Timeline">
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <section id="timeline">
+                      <TimelineSection />
+                    </section>
+                  </Suspense>
+                </SectionErrorBoundary>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <section id="projects">
-                    <ProjectsSection />
-                  </section>
-                </Suspense>
+                <SectionErrorBoundary sectionName="Projects">
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <section id="projects">
+                      <ProjectsSection />
+                    </section>
+                  </Suspense>
+                </SectionErrorBoundary>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <section id="skills">
-                    <SkillsSection />
-                  </section>
-                </Suspense>
+                <SectionErrorBoundary sectionName="Skills">
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <section id="skills">
+                      <SkillsSection />
+                    </section>
+                  </Suspense>
+                </SectionErrorBoundary>
 
-                <Suspense fallback={<SectionSkeleton />}>
-                  <section id="contact">
-                    <ContactSection />
-                  </section>
-                </Suspense>
+                <SectionErrorBoundary sectionName="Contact">
+                  <Suspense fallback={<SectionSkeleton />}>
+                    <section id="contact">
+                      <ContactSection />
+                    </section>
+                  </Suspense>
+                </SectionErrorBoundary>
 
                 <Suspense fallback={null}>
                   <Footer />
