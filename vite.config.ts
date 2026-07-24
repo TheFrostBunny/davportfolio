@@ -22,14 +22,8 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
-    // Optimize bundle size
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    // Use default esbuild minification (no terser dependency needed)
+    minify: 'esbuild',
     // Code splitting configuration
     rollupOptions: {
       output: {
