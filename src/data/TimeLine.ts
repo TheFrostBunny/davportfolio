@@ -15,7 +15,7 @@ const TimeLine = {
       },
       {
         year: '2026-2028',
-        title: 'Læring hos Norseye',
+        title: 'Lærling hos Norseye',
         description: 'Læring og praktisk erfaring hos Norseye fra sommeren 2026 til 2028.',
       },
     ],
