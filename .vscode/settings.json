@@ -7,6 +7,13 @@
     "**/.DS_Store": true,
     "**/node_modules": true
   },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.yarn": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/build": true
+  },
 
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
