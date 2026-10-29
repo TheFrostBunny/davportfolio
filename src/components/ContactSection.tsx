@@ -78,7 +78,7 @@ export default function ContactSection() {
             </h3>
             <div className="space-y-4 sm:space-y-6">
               <div className="flex items-start sm:items-center gap-4 sm:gap-5">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/5 dark:bg-white/5 light:bg-black/5 flex items-center justify-center text-blue-400 flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/5 dark:bg-white/5 light:bg-black/5 flex items-center justify-center text-blue-400 shrink-0">
                   <MapPin size={18} />
                 </div>
                 <div className="min-w-0">
@@ -91,7 +91,7 @@ export default function ContactSection() {
                 </div>
               </div>
               <div className="flex items-start sm:items-center gap-4 sm:gap-5">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/5 dark:bg-white/5 light:bg-black/5 flex items-center justify-center text-blue-400 flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/5 dark:bg-white/5 light:bg-black/5 flex items-center justify-center text-blue-400 shrink-0">
                   <Zap size={18} />
                 </div>
                 <div className="min-w-0">

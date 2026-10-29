@@ -52,17 +52,13 @@ const Home = () => {
       >
         Skip to content
       </a>
-
       <QuantumBackground />
-
       <div className="relative z-10">
         <Navigation />
-
         <main id="main">
           <section id="home">
             <HeroSection />
           </section>
-
           {sections.map(({ id, name, Component }) => (
             <section key={id} id={id}>
               <SectionErrorBoundary sectionName={name}>
@@ -73,7 +69,6 @@ const Home = () => {
             </section>
           ))}
         </main>
-
         <Suspense fallback={null}>
           <Footer />
         </Suspense>

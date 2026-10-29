@@ -26,7 +26,6 @@ export default function SkillsGalaxy() {
                   {t.categories[category as keyof typeof t.categories] ||
                     category}
                 </h3>
-
                 <div className="space-y-6 sm:space-y-8">
                   {categorySkills.map((skill, index) => (
                     <div key={skill.name} className="group">
@@ -34,12 +33,11 @@ export default function SkillsGalaxy() {
                         <h4 className="text-xs sm:text-sm font-semibold text-foreground group-hover:text-blue-400 transition-colors">
                           {skill.name}
                         </h4>
-                        <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground ml-2 flex-shrink-0">
+                        <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground ml-2 shrink-0">
                           {skill.level}%
                         </span>
                       </div>
-
-                      <div className="w-full bg-white/5 dark:bg-white/5 light:bg-black/5 rounded-full h-[2px] overflow-hidden">
+                      <div className="w-full bg-white/5 dark:bg-white/5 light:bg-black/5 rounded-full h-0.5 overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
@@ -49,7 +47,7 @@ export default function SkillsGalaxy() {
                             ease: "easeOut",
                           }}
                           viewport={{ once: true }}
-                          className="bg-gradient-to-r from-blue-600 to-blue-400 h-full rounded-full"
+                          className="bg-linear-to-r from-blue-600 to-blue-400 h-full rounded-full"
                         />
                       </div>
                     </div>
