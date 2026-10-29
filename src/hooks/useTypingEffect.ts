@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 /**
  * useTypingEffect Hook
- * 
+ *
  * Creates a dynamic typing animation effect for text.
  * Cycles through multiple texts with backspace animation.
- * 
+ *
  * Design: Dynamic typing creates sense of "live" AI interface
  */
 export function useTypingEffect(
@@ -14,7 +14,7 @@ export function useTypingEffect(
   backspaceSpeed: number = 50,
   delayBetweenTexts: number = 2000
 ) {
-  const [displayText, setDisplayText] = useState('');
+  const [displayText, setDisplayText] = useState("");
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
@@ -42,13 +42,21 @@ export function useTypingEffect(
         }, backspaceSpeed);
       } else {
         // Move to next text
-        setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+        setCurrentTextIndex(prev => (prev + 1) % texts.length);
         setIsTyping(true);
       }
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isTyping, currentTextIndex, texts, speed, backspaceSpeed, delayBetweenTexts]);
+  }, [
+    displayText,
+    isTyping,
+    currentTextIndex,
+    texts,
+    speed,
+    backspaceSpeed,
+    delayBetweenTexts,
+  ]);
 
   return displayText;
 }

@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
-import { useTypingEffect } from '@/hooks/useTypingEffect';
-import { ArrowDown } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import AboutMe from '@/data/AboutMe';
+import { motion } from "framer-motion";
+import { useTypingEffect } from "@/hooks/useTypingEffect";
+import { ArrowDown } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import AboutMe from "@/data/AboutMe";
 
 export default function HeroSection() {
   const { language } = useLanguage();
@@ -41,7 +41,9 @@ export default function HeroSection() {
       >
         {/* Name/Branding */}
         <motion.div variants={itemVariants} className="mb-6">
-          <span className="text-blue-500 font-mono text-sm tracking-widest uppercase">{t.name}</span>
+          <span className="text-blue-500 font-mono text-sm tracking-widest uppercase">
+            {t.name}
+          </span>
         </motion.div>
 
         {/* Main headline */}
@@ -71,21 +73,33 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-5 mb-20"
         >
           <motion.button
-            whileHover={{ scale: 1.02, backgroundColor: '#3b82f6' }}
+            whileHover={{ scale: 1.02, backgroundColor: "#3b82f6" }}
             whileTap={{ scale: 0.98 }}
             className="px-6 sm:px-10 py-3 sm:py-4 bg-blue-600 text-white font-semibold rounded-full text-sm sm:text-base
               transition-all duration-300 shadow-lg shadow-blue-500/20 w-full sm:w-auto"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() =>
+              document
+                .getElementById("projects")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             {t.cta1}
           </motion.button>
 
           <motion.button
-            whileHover={{ scale: 1.02, borderColor: '#60a5fa', backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
+            whileHover={{
+              scale: 1.02,
+              borderColor: "#60a5fa",
+              backgroundColor: "rgba(59, 130, 246, 0.1)",
+            }}
             whileTap={{ scale: 0.98 }}
             className="px-6 sm:px-10 py-3 sm:py-4 border border-border text-foreground font-semibold rounded-full text-sm sm:text-base
               transition-all duration-300 w-full sm:w-auto"
-            onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() =>
+              document
+                .getElementById("timeline")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
           >
             {t.cta2}
           </motion.button>
@@ -98,7 +112,9 @@ export default function HeroSection() {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-xs uppercase tracking-[0.2em] font-medium">{t.scroll}</span>
+          <span className="text-xs uppercase tracking-[0.2em] font-medium">
+            {t.scroll}
+          </span>
           <ArrowDown size={18} className="text-blue-500" />
         </motion.div>
       </motion.div>

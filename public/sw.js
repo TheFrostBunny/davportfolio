@@ -1,83 +1,137 @@
-/**
- * Service Worker for Offline Support
- * Caches assets and enables offline functionality
- */
+const VERSION = "v2";
+const STATIC_CACHE = `davportfolio-static-${VERSION}`;
+const RUNTIME_CACHE = `davportfolio-runtime-${VERSION}`;
+const MAX_RUNTIME_ENTRIES = 50;
 
-const CACHE_NAME = 'davportfolio-v1';
-const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-];
+const ASSETS_TO_CACHE = ["/", "/index.html", "/manifest.json", "/offline.html"];
 
-// Install event - cache assets
-self.addEventListener('install', (event) => {
+const CACHEABLE_DESTINATIONS = new Set(["style", "script", "image", "font"]);
+
+async function trimCache(cacheName, maxEntries) {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  if (keys.length > maxEntries) {
+    await cache.delete(keys[0]);
+    return trimCache(cacheName, maxEntries);
+  }
+}
+
+function isSafeToCache(response) {
+  if (!response || response.status !== 200) return false;
+  if (response.type !== "basic") return false;
+
+  const cacheControl = response.headers.get("Cache-Control") || "";
+  if (/no-store|private/i.test(cacheControl)) return false;
+  if (response.headers.has("Set-Cookie")) return false;
+
+  return true;
+}
+
+// Install
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-        console.log('Cache addAll error:', err);
-      });
-    })
-  );
-  self.skipWaiting();
-});
-
-// Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
+    (async () => {
+      const cache = await caches.open(STATIC_CACHE);
+      await Promise.allSettled(
+        ASSETS_TO_CACHE.map(url =>
+          cache.add(new Request(url, { cache: "reload" }))
+        )
       );
-    })
+    })()
   );
-  self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
-self.addEventListener('fetch', (event) => {
+// Activate
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    (async () => {
+      const keep = new Set([STATIC_CACHE, RUNTIME_CACHE]);
+      const names = await caches.keys();
+      await Promise.all(
+        names
+          .filter(name => name.startsWith("davportfolio-") && !keep.has(name))
+          .map(name => caches.delete(name))
+      );
+
+      if (self.registration.navigationPreload) {
+        await self.registration.navigationPreload.enable();
+      }
+      await self.clients.claim();
+    })()
+  );
+});
+
+// Update on request from the page
+self.addEventListener("message", event => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
+// Fetch
+self.addEventListener("fetch", event => {
   const { request } = event;
+
+  if (request.method !== "GET") return;
+
   const url = new URL(request.url);
 
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+  if (url.origin !== self.location.origin) return;
+  if (!["http:", "https:"].includes(url.protocol)) return;
+  if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/admin"))
+    return;
+  if (request.headers.has("range")) return;
+
+  // Pages: network first
+  if (request.mode === "navigate") {
+    event.respondWith(
+      (async () => {
+        try {
+          const preload = await event.preloadResponse;
+          return preload || (await fetch(request));
+        } catch (err) {
+          return (
+            (await caches.match(request)) ||
+            (await caches.match("/offline.html")) ||
+            (await caches.match("/index.html")) ||
+            new Response("You are offline.", {
+              status: 503,
+              headers: { "Content-Type": "text/plain; charset=utf-8" },
+            })
+          );
+        }
+      })()
+    );
     return;
   }
 
-  // Skip cross-origin requests
-  if (url.origin !== location.origin) {
-    return;
-  }
+  // Assets: stale-while-revalidate
+  if (CACHEABLE_DESTINATIONS.has(request.destination)) {
+    event.respondWith(
+      (async () => {
+        const cache = await caches.open(RUNTIME_CACHE);
+        const cached = await cache.match(request);
 
-  event.respondWith(
-    caches.match(request).then((response) => {
-      if (response) {
-        return response;
-      }
+        const networkFetch = fetch(request)
+          .then(async response => {
+            if (isSafeToCache(response)) {
+              await cache.put(request, response.clone());
+              trimCache(RUNTIME_CACHE, MAX_RUNTIME_ENTRIES);
+            }
+            return response;
+          })
+          .catch(() => null);
 
-      return fetch(request).then((response) => {
-        // Don't cache non-successful responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
+        if (cached) {
+          event.waitUntil(networkFetch);
+          return cached;
         }
 
-        // Clone the response
-        const responseToCache = response.clone();
-
-        // Cache successful responses
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(request, responseToCache);
-        });
-
-        return response;
-      }).catch(() => {
-        // Return offline page or cached response
-        return caches.match('/index.html');
-      });
-    })
-  );
+        const response = await networkFetch;
+        return (
+          response || new Response("", { status: 504, statusText: "Offline" })
+        );
+      })()
+    );
+  }
 });

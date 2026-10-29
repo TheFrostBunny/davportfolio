@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface GlassCardProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface GlassCardProps {
 
 export default function GlassCard({
   children,
-  className = '',
+  className = "",
   hover = true,
   delay = 0,
 }: GlassCardProps) {
@@ -22,12 +22,12 @@ export default function GlassCard({
         duration: 0.5,
         delay,
       }}
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, margin: "-100px" }}
       whileHover={hover ? { y: -4 } : undefined}
       className={`
         bg-card border border-border rounded-lg p-6
         transition-all duration-200
-        ${hover ? 'cursor-pointer hover:border-gray-500' : ''}
+        ${hover ? "cursor-pointer hover:border-gray-500" : ""}
         ${className}
       `}
     >

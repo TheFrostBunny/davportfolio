@@ -1,24 +1,22 @@
-import { motion } from 'framer-motion';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const translations = {
   no: {
-    tagline: 'Kreativ Utvikler',
-    home: 'Hjem',
-    projects: 'Prosjekter',
-    contact: 'Kontakt',
-    copyright: 'Laget med Presisjon & Passion',
+    tagline: "Kreativ Utvikler",
+    home: "Hjem",
+    projects: "Prosjekter",
+    contact: "Kontakt",
+    copyright: "Laget med Presisjon & Passion",
   },
   en: {
-    tagline: 'Creative Developer',
-    home: 'Home',
-    projects: 'Projects',
-    contact: 'Contact',
-    copyright: 'Crafted with Precision & Passion',
+    tagline: "Creative Developer",
+    home: "Home",
+    projects: "Projects",
+    contact: "Contact",
+    copyright: "Crafted with Precision & Passion",
   },
 };
-
-
 
 export default function Footer() {
   const { language } = useLanguage();
@@ -32,7 +30,7 @@ export default function Footer() {
           {/* Branding */}
           <div className="text-center md:text-left">
             <div className="text-lg sm:text-xl font-bold tracking-tighter text-white mb-2 sm:mb-3">
-              <span className="text-blue-500">David </span> Portfolio 
+              <span className="text-blue-500">David </span> Portfolio
             </div>
             <p className="text-gray-500 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em]">
               {t.tagline}
@@ -41,9 +39,24 @@ export default function Footer() {
 
           {/* Links */}
           <div className="flex items-center gap-4 sm:gap-10">
-            <a href="#home" className="text-gray-500 hover:text-white transition-colors text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">{t.home}</a>
-            <a href="#projects" className="text-gray-500 hover:text-white transition-colors text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">{t.projects}</a>
-            <a href="#contact" className="text-gray-500 hover:text-white transition-colors text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">{t.contact}</a>
+            <a
+              href="#home"
+              className="text-gray-500 hover:text-white transition-colors text-[9px] sm:text-[10px] font-bold uppercase tracking-widest"
+            >
+              {t.home}
+            </a>
+            <a
+              href="#projects"
+              className="text-gray-500 hover:text-white transition-colors text-[9px] sm:text-[10px] font-bold uppercase tracking-widest"
+            >
+              {t.projects}
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-500 hover:text-white transition-colors text-[9px] sm:text-[10px] font-bold uppercase tracking-widest"
+            >
+              {t.contact}
+            </a>
           </div>
 
           {/* Copyright */}

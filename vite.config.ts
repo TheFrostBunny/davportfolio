@@ -6,10 +6,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   base: process.env.VITE_BASE_PATH ?? "/",
 
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
 
   resolve: {
     alias: {
@@ -23,35 +20,31 @@ export default defineConfig({
     outDir: "dist",
     emptyOutDir: true,
     // Use default esbuild minification (no terser dependency needed)
-    minify: 'esbuild',
+    minify: "esbuild",
     // Code splitting configuration
     rollupOptions: {
       output: {
         manualChunks: {
           // Split vendor libraries into separate chunks
-          'vendor': [
-            'react',
-            'react-dom',
-            'framer-motion',
-          ],
+          vendor: ["react", "react-dom", "framer-motion"],
           // Split UI components
-          'ui': [
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-popover',
-            '@radix-ui/react-dropdown-menu',
+          ui: [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-popover",
+            "@radix-ui/react-dropdown-menu",
           ],
         },
         // Optimize chunk file names
-        chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
+        chunkFileNames: "js/[name]-[hash].js",
+        entryFileNames: "js/[name]-[hash].js",
+        assetFileNames: assetInfo => {
+          const info = assetInfo.name.split(".");
           const ext = info[info.length - 1];
           if (/png|jpe?g|gif|svg/.test(ext)) {
             return `images/[name]-[hash][extname]`;
           } else if (/woff|woff2|ttf|otf|eot/.test(ext)) {
             return `fonts/[name]-[hash][extname]`;
-          } else if (ext === 'css') {
+          } else if (ext === "css") {
             return `css/[name]-[hash][extname]`;
           }
           return `[name]-[hash][extname]`;

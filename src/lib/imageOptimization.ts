@@ -4,14 +4,14 @@
  */
 
 export const supportsWebP = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  
-  const canvas = document.createElement('canvas');
+  if (typeof window === "undefined") return false;
+
+  const canvas = document.createElement("canvas");
   canvas.width = 1;
   canvas.height = 1;
-  
+
   try {
-    return canvas.toDataURL('image/webp').indexOf('image/webp') === 5;
+    return canvas.toDataURL("image/webp").indexOf("image/webp") === 5;
   } catch {
     return false;
   }
@@ -20,15 +20,15 @@ export const supportsWebP = (): boolean => {
 export const getOptimizedImageUrl = (
   url: string,
   width?: number,
-  format: 'webp' | 'auto' = 'auto'
+  format: "webp" | "auto" = "auto"
 ): string => {
-  if (!url) return '';
-  
+  if (!url) return "";
+
   // If it's a data URL or external URL, return as-is
-  if (url.startsWith('data:') || url.startsWith('http')) {
+  if (url.startsWith("data:") || url.startsWith("http")) {
     return url;
   }
-  
+
   // For local images, you could add image optimization service here
   // Example: Cloudinary, Imgix, or similar
   return url;
@@ -49,15 +49,15 @@ export interface LazyImageProps {
  */
 export const createPictureElement = (props: LazyImageProps): string => {
   const { src, alt, width, height, placeholder } = props;
-  
+
   return `
     <picture>
       <source srcset="${src}" type="image/webp" media="(prefers-color-scheme: dark)" />
       <img 
         src="${src}" 
         alt="${alt}"
-        ${width ? `width="${width}"` : ''}
-        ${height ? `height="${height}"` : ''}
+        ${width ? `width="${width}"` : ""}
+        ${height ? `height="${height}"` : ""}
         loading="lazy"
         decoding="async"
       />

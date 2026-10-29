@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { AlertCircle, RefreshCw } from 'lucide-react';
+import React, { ReactNode } from "react";
+import { AlertCircle, RefreshCw } from "lucide-react";
 
 interface Props {
   children: ReactNode;
@@ -17,7 +17,10 @@ interface State {
  * Wraps individual sections to prevent one error from crashing the entire app
  * If a section fails, it shows a graceful error message instead of crashing
  */
-export default class SectionErrorBoundary extends React.Component<Props, State> {
+export default class SectionErrorBoundary extends React.Component<
+  Props,
+  State
+> {
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
@@ -48,18 +51,20 @@ export default class SectionErrorBoundary extends React.Component<Props, State> 
                     {this.props.sectionName} Error
                   </h3>
                   <p className="text-red-300/80 mb-4">
-                    Something went wrong loading this section. Please try refreshing the page.
+                    Something went wrong loading this section. Please try
+                    refreshing the page.
                   </p>
-                  {process.env.NODE_ENV === 'development' && this.state.error && (
-                    <details className="mb-4 cursor-pointer">
-                      <summary className="text-sm text-red-300/60 hover:text-red-300">
-                        Error details (development only)
-                      </summary>
-                      <pre className="mt-2 text-xs bg-black/30 p-3 rounded overflow-auto text-red-300/60">
-                        {this.state.error.toString()}
-                      </pre>
-                    </details>
-                  )}
+                  {process.env.NODE_ENV === "development" &&
+                    this.state.error && (
+                      <details className="mb-4 cursor-pointer">
+                        <summary className="text-sm text-red-300/60 hover:text-red-300">
+                          Error details (development only)
+                        </summary>
+                        <pre className="mt-2 text-xs bg-black/30 p-3 rounded overflow-auto text-red-300/60">
+                          {this.state.error.toString()}
+                        </pre>
+                      </details>
+                    )}
                   <button
                     onClick={this.handleReset}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 hover:text-red-200 transition-colors"

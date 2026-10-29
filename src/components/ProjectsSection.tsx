@@ -1,18 +1,20 @@
-import { motion } from 'framer-motion';
-import { useLocation } from 'wouter';
-import GlassCard from './GlassCard';
-import { Github, ExternalLink, Code2, Zap } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import projectsData from '@/data/projects.json';
+import { motion } from "framer-motion";
+import { useLocation } from "wouter";
+import GlassCard from "./GlassCard";
+import { Github, ExternalLink, Code2, Zap } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import projectsData from "@/data/projects.json";
 
 const translations = {
   no: {
-    title: 'Valgte Prosjekter',
-    subtitle: 'Et kuratert utvalg av mine tekniske utforskninger og forskningsprosjekter.',
+    title: "Valgte Prosjekter",
+    subtitle:
+      "Et kuratert utvalg av mine tekniske utforskninger og forskningsprosjekter.",
   },
   en: {
-    title: 'Selected Projects',
-    subtitle: 'A curated selection of my technical explorations and research projects.',
+    title: "Selected Projects",
+    subtitle:
+      "A curated selection of my technical explorations and research projects.",
   },
 };
 
@@ -22,7 +24,7 @@ interface Project {
   nameEn: string;
   descriptionNo: string;
   descriptionEn: string;
-  status: 'Active' | 'Completed' | 'Experimental' | 'Archived';
+  status: "Active" | "Completed" | "Experimental" | "Archived";
   technologies: string[];
   keyLearningNo: string;
   keyLearningEn: string;
@@ -35,10 +37,10 @@ interface Project {
 const projects = projectsData as Project[];
 
 const statusColors = {
-  Active: 'text-emerald-400 bg-emerald-500/10',
-  Completed: 'text-blue-400 bg-blue-500/10',
-  Experimental: 'text-amber-400 bg-amber-500/10',
-  Archived: 'text-slate-400 bg-slate-500/10',
+  Active: "text-emerald-400 bg-emerald-500/10",
+  Completed: "text-blue-400 bg-blue-500/10",
+  Experimental: "text-amber-400 bg-amber-500/10",
+  Archived: "text-slate-400 bg-slate-500/10",
 };
 
 export default function ExperimentArchive() {
@@ -92,11 +94,13 @@ export default function ExperimentArchive() {
                 </div>
 
                 <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
-                  {language === 'no' ? project.nameNo : project.nameEn}
+                  {language === "no" ? project.nameNo : project.nameEn}
                 </h3>
-                
+
                 <p className="text-muted-foreground text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed font-light line-clamp-3">
-                  {language === 'no' ? project.descriptionNo : project.descriptionEn}
+                  {language === "no"
+                    ? project.descriptionNo
+                    : project.descriptionEn}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
@@ -114,14 +118,18 @@ export default function ExperimentArchive() {
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <Zap size={12} className="text-amber-400" />
-                      <span className="text-[8px] sm:text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Innovation</span>
+                      <span className="text-[8px] sm:text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
+                        Innovation
+                      </span>
                     </div>
                     <div className="flex items-center gap-1">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <div
                           key={i}
                           className={`w-2 sm:w-3 h-0.5 sm:h-1 rounded-full ${
-                            i < Math.round(project.innovationScore / 2) ? 'bg-blue-500' : 'bg-white/10'
+                            i < Math.round(project.innovationScore / 2)
+                              ? "bg-blue-500"
+                              : "bg-white/10"
                           }`}
                         />
                       ))}
@@ -129,7 +137,7 @@ export default function ExperimentArchive() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 pt-4 sm:pt-6 border-t border-white/5">
-                    {typeof project.url === 'string' ? (
+                    {typeof project.url === "string" ? (
                       <motion.button
                         onClick={() => {
                           if (project.url) {

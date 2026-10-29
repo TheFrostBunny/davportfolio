@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { Code, Shield, Cpu, Brain, Rocket, Briefcase } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { motion } from "framer-motion";
+import { Code, Shield, Cpu, Brain, Rocket, Briefcase } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import TimeLine from "@/data/TimeLine";
 
 const icons = [Code, Shield, Cpu, Brain, Rocket, Briefcase];
@@ -72,7 +72,9 @@ export default function TimelineSection() {
                     </div>
                   </div>
 
-                  <div className={`hidden sm:flex items-center gap-8 md:gap-12 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
+                  <div
+                    className={`hidden sm:flex items-center gap-8 md:gap-12 ${isEven ? "flex-row" : "flex-row-reverse"}`}
+                  >
                     <div className="flex-1">
                       <motion.div
                         whileHover={{ y: -4 }}

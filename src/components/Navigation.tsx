@@ -1,24 +1,24 @@
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { useTheme } from '@/contexts/ThemeContext';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useIsMobile } from '@/hooks/useMobile';
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useIsMobile } from "@/hooks/useMobile";
 
 const translations = {
   no: {
-    home: 'Hjem',
-    timeline: 'Reise',
-    projects: 'Prosjekter',
-    skills: 'Ferdigheter',
-    contact: 'Kontakt',
+    home: "Hjem",
+    timeline: "Reise",
+    projects: "Prosjekter",
+    skills: "Ferdigheter",
+    contact: "Kontakt",
   },
   en: {
-    home: 'Home',
-    timeline: 'Journey',
-    projects: 'Projects',
-    skills: 'Skills',
-    contact: 'Contact',
+    home: "Home",
+    timeline: "Journey",
+    projects: "Projects",
+    skills: "Skills",
+    contact: "Contact",
   },
 };
 
@@ -33,24 +33,24 @@ export default function Navigation() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const t = translations[language];
 
   const navItems = [
-    { label: t.home, href: '#home' },
-    { label: t.timeline, href: '#timeline' },
-    { label: t.projects, href: '#projects' },
-    { label: t.skills, href: '#skills' },
-    { label: t.contact, href: '#contact' },
+    { label: t.home, href: "#home" },
+    { label: t.timeline, href: "#timeline" },
+    { label: t.projects, href: "#projects" },
+    { label: t.skills, href: "#skills" },
+    { label: t.contact, href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setMobileMenuOpen(false);
     }
   };
@@ -59,8 +59,8 @@ export default function Navigation() {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/70 backdrop-blur-xl border-b border-white/5'
-          : 'bg-transparent'
+          ? "bg-background/70 backdrop-blur-xl border-b border-white/5"
+          : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -69,7 +69,7 @@ export default function Navigation() {
       <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <motion.button
               key={item.href}
               onClick={() => scrollToSection(item.href)}
@@ -99,23 +99,29 @@ export default function Navigation() {
             className="inline-flex items-center justify-center rounded-md p-1.5 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-400/40 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.96 }}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
+            title={
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            }
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </motion.button>
         )}
 
         {/* Language Toggle */}
         <motion.button
-          onClick={() => setLanguage(language === 'no' ? 'en' : 'no')}
+          onClick={() => setLanguage(language === "no" ? "en" : "no")}
           className="inline-flex items-center justify-center rounded-md p-1.5 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-400/40 transition-colors"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.96 }}
-          aria-label={language === 'no' ? 'Switch to English' : 'Bytt til norsk'}
-          title={language === 'no' ? 'Switch to English' : 'Bytt til norsk'}
+          aria-label={
+            language === "no" ? "Switch to English" : "Bytt til norsk"
+          }
+          title={language === "no" ? "Switch to English" : "Bytt til norsk"}
         >
-          {language === 'no' ? (
+          {language === "no" ? (
             <svg
               aria-hidden="true"
               viewBox="0 0 60 36"
@@ -150,7 +156,7 @@ export default function Navigation() {
           className="md:hidden bg-background/95 backdrop-blur-xl border-b border-white/5"
         >
           <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-3">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <motion.button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}

@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useLanguage } from '@/contexts/LanguageContext';
-import Skills, { categories } from '@/data/Skills';
+import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import Skills, { categories } from "@/data/Skills";
 
 export default function SkillsGalaxy() {
   const { language } = useLanguage();
@@ -12,7 +12,7 @@ export default function SkillsGalaxy() {
       <div className="container max-w-5xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-16 gap-y-12 sm:gap-y-16">
           {categories.map((category, categoryIndex) => {
-            const categorySkills = skills.filter((s) => s.category === category);
+            const categorySkills = skills.filter(s => s.category === category);
 
             return (
               <motion.div
@@ -23,7 +23,8 @@ export default function SkillsGalaxy() {
                 viewport={{ once: true }}
               >
                 <h3 className="text-xs font-bold text-blue-500 uppercase tracking-[0.2em] mb-6 sm:mb-10">
-                  {t.categories[category as keyof typeof t.categories] || category}
+                  {t.categories[category as keyof typeof t.categories] ||
+                    category}
                 </h3>
 
                 <div className="space-y-6 sm:space-y-8">
@@ -42,7 +43,11 @@ export default function SkillsGalaxy() {
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1.2, delay: index * 0.1, ease: 'easeOut' }}
+                          transition={{
+                            duration: 1.2,
+                            delay: index * 0.1,
+                            ease: "easeOut",
+                          }}
                           viewport={{ once: true }}
                           className="bg-gradient-to-r from-blue-600 to-blue-400 h-full rounded-full"
                         />
