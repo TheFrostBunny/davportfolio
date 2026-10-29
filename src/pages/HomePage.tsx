@@ -37,8 +37,7 @@ function Skeleton() {
   );
 }
 
-export default function Home() {
-  // Preload lazy chunks when idle
+const Home = () => {
   useEffect(() => {
     const preload = () => Object.values(imports).forEach(load => load());
     const id = setTimeout(preload, 1500);
@@ -81,4 +80,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+d;
+export default Home;
